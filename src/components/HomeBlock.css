@@ -1,0 +1,105 @@
+.home-block {
+  position: fixed; /* 固定定位  fixed positioning*/
+  bottom: 0; /* Positioning to the bottom of the page */
+  left: 0;
+  width: 80%;
+  height: 50%;
+  padding: 20px;
+  background-color: #eee6e6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 10px;
+  overflow-y: auto; /* Enable scrolling when content exceeds the container */
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.book-card {
+  background-color: #f5eaea;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.book-card:hover {
+  transform: scale(1.05); /* zoom out*/
+}
+
+.book-image {
+  width: 100%;
+  height: auto; /* auto height for adjusting */
+  background-color: #e3e3e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Make sure the image fills */
+  border-radius: 8px;
+}
+
+.book-info {
+  flex: 1;
+  text-align: left;
+  width: 100%;
+}
+
+.book-info h3 {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  color: #222;
+}
+
+.book-info p {
+  color: #555;
+  margin: 5px 0;
+}
+
+.book-stats {
+  display: flex;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #ed7a7a;
+  margin-top: 10px;
+}
+
+.book-description {
+  margin-top: 8px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.add-review-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #ca7a8f;
+  color: #060404;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-review-btn:hover {
+  background-color: #dedfde;
+}
