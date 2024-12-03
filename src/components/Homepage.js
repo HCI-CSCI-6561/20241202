@@ -8,7 +8,7 @@ function Homepage() {
       <h1>Homepage</h1>
       <HomeBlock />
       <div className="review-link">
-        {/* 点击按钮跳转到 ReviewPage */}
+        {/* lick jump to ReviewPage */}
         <Link to="/review">
           <button>Lets give a Review!</button>
         </Link>

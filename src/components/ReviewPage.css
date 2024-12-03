@@ -22,12 +22,12 @@
 
 .book-image {
     width: 50%; /* 图片占容器的全部宽度 */
-    height: auto; /* 自动调整高度，保持图片比例 */
-    max-height: 400px; /* 设置图片最大高度，避免过长 */
+    height: auto; /* 自动调整高度保持图片比例 */
+    max-height: 400px; /* 设置图片最大高度 */
     border-radius: 8px; /* 圆角边框 */
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
     object-fit: cover; /* 确保图片填满容器，同时裁剪多余部分 */
-    display: block; /* 确保图片在父容器中居中显示 */
+    display: block; /* 图片居中显示 */
     margin: 0 auto 15px; /* 居中对齐并设置底部间距 */
 }
 
