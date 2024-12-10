@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AreWe from '../assets/AreWe.png';
 import GoodEnergy from '../assets/GoodEnergy.png';
@@ -12,6 +12,31 @@ import './HomeBlock.css';
 
 function HomeBlock() {
   const navigate = useNavigate();
+  const [currentAd, setCurrentAd] = useState(0);
+
+  // 广告图片数据
+  const ads = [
+    {
+      image: 'https://via.placeholder.com/800x300?text=Ad+1',
+      title: 'Discover Amazing Books!',
+    },
+    {
+      image: 'https://via.placeholder.com/800x300?text=Ad+2',
+      title: 'Special Discounts on Bestsellers!',
+    },
+    {
+      image: 'https://via.placeholder.com/800x300?text=Ad+3',
+      title: 'Join Our Book Club!',
+    },
+  ];
+
+  const nextAd = () => {
+    setCurrentAd((prev) => (prev + 1) % ads.length);
+  };
+
+  const prevAd = () => {
+    setCurrentAd((prev) => (prev - 1 + ads.length) % ads.length);
+  };
 
   const books = [
     {
@@ -95,41 +120,68 @@ function HomeBlock() {
       description: 'Practical strategies for effective management...',
     },
   ];
+    // 其他书籍数据...
 
   const handleReviewClick = (id) => {
-    navigate(`/review/${id}`); // 修复 navigate 模板字符串问题
+    navigate(`/review/${id}`);
   };
 
   return (
     <div className="home-block">
-      <h2>Most Liked Books</h2>
-      <div className="book-list">
-        {books.map((book) => (
-          <div key={book.id} className="book-card">
-            <div className="book-image">
-              <img src={book.image} alt={book.title} />
-            </div>
-            <div className="book-info">
-              <h3>{book.title}</h3>
-              <p>by {book.author}</p>
-              <div className="book-stats">
-                <span>👁 {book.views}</span>
-                <span>💬 {book.reviews}</span>
-                <span>⭐ {book.rating}</span>
-              </div>
-              <p className="book-description">{book.description}</p>
-              <button
-                className="add-review-btn"
-                onClick={() => handleReviewClick(book.id)}
-              >
-                Add Review
-              </button>
-            </div>
+      {/* 上半部分 */}
+      <div className="upper-section">
+        <header className="header">
+          <div className="logo">Logo</div>
+          <input type="text" className="search-bar" placeholder="Search Book/Author" />
+          <div className="auth-buttons">Login/Logout</div>
+        </header>
+
+        <div className="ad-section">
+          <button className="ad-btn prev-btn" onClick={prevAd}>
+            ◀
+          </button>
+          <div className="ad-content">
+            <img src={ads[currentAd].image} alt={`Ad ${currentAd + 1}`} />
+            <h3>{ads[currentAd].title}</h3>
           </div>
-        ))}
+          <button className="ad-btn next-btn" onClick={nextAd}>
+            ▶
+          </button>
+        </div>
+      </div>
+
+      {/* 下半部分 */}
+      <div className="lower-section">
+        <h2>Most Liked Books</h2>
+        <div className="book-list">
+          {books.map((book) => (
+            <div key={book.id} className="book-card">
+              <div className="book-image">
+                <img src={book.image} alt={book.title} />
+              </div>
+              <div className="book-info">
+                <h3>{book.title}</h3>
+                <p>by {book.author}</p>
+                <div className="book-stats">
+                  <span>👁 {book.views}</span>
+                  <span>💬 {book.reviews}</span>
+                  <span>⭐ {book.rating}</span>
+                </div>
+                <p className="book-description">{book.description}</p>
+                <button
+                  className="add-review-btn"
+                  onClick={() => handleReviewClick(book.id)}
+                >
+                  Add Review
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default HomeBlock;
+

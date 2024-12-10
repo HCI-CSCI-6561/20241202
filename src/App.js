@@ -28,7 +28,7 @@ function App() {
 
         {/* 新增书籍详情页面 */}
         <Route
-          path="/book"
+          path="/Book"
           element={
             <div className="bg-[#b08c7d] min-h-screen p-6">
               <BookDetail />
